@@ -1,6 +1,6 @@
-'use client';
-import { useState } from 'react';
-import { PriceMap, successUrl, cancelUrl, ProductKey } from '@/lib/pricing';
+"use client";
+import { useState } from "react";
+import { PriceMap, successUrl, cancelUrl, ProductKey } from "@/lib/pricing";
 
 export default function BuyButtons({ product }: { product: ProductKey }) {
   const [loading, setLoading] = useState(false);
@@ -12,9 +12,9 @@ export default function BuyButtons({ product }: { product: ProductKey }) {
   const handleCheckout = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           priceId: entry.priceId,
           mode: entry.mode,
@@ -24,10 +24,10 @@ export default function BuyButtons({ product }: { product: ProductKey }) {
       });
       const data = await res.json();
       if (data.url) window.location.href = data.url;
-      else alert('Unable to start checkout.');
+      else alert("Unable to start checkout.");
     } catch (e) {
       console.error(e);
-      alert('Error starting checkout.');
+      alert("Error starting checkout.");
     } finally {
       setLoading(false);
     }
@@ -44,7 +44,7 @@ export default function BuyButtons({ product }: { product: ProductKey }) {
   if (hasServerPrice) {
     return (
       <button onClick={handleCheckout} className="btn btn-primary" disabled={loading}>
-        {loading ? 'Starting…' : 'Buy with Stripe'}
+        {loading ? "Starting…" : "Buy with Stripe"}
       </button>
     );
   }

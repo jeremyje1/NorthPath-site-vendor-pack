@@ -1,10 +1,10 @@
-import './globals.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: 'NorthPath Strategies – AI Picks & Shovels',
-  description: 'Compliance, integrations, and evals for EdTech AI builders.',
+  title: "NorthPath Strategies – AI Picks & Shovels",
+  description: "Compliance, integrations, and evals for EdTech AI builders.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
