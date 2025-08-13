@@ -15,7 +15,7 @@ export default function VendorPack() {
       </ul>
       <div className="flex gap-3">
         <BuyButtons product="vendor-pack" />
-        <BuyButtons product="vendor-pack-updates" />
+        <BuyButtons product="vendor-pack-updates-monthly" />
         <Link className="btn" href="/pricing">
           See pricing
         </Link>

@@ -21,6 +21,10 @@ export async function POST(req: NextRequest) {
       success_url: successUrl,
       cancel_url: cancelUrl,
       automatic_tax: { enabled: true },
+      allow_promotion_codes: true,
+      payment_method_types: ["card", "us_bank_account"],
+      customer_creation: "always",
+      subscription_data: mode === "subscription" ? { trial_period_days: 14 } : undefined,
     });
     return NextResponse.json({ url: session.url });
   } catch (err: any) {
