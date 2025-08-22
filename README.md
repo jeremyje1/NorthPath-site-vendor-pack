@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## NorthPath Vendor Pack / Connectors / EvalOps Site
 
-## Getting Started
+Marketing & checkout site for product bundles. Includes:
 
-First, run the development server:
+- Pricing matrix & checkout (Stripe hosted Checkout Sessions)
+- Enterprise quote request capture
+- Lightweight analytics event logging placeholder
+- Stripe webhook handler (provisioning TODOs inline)
+
+## Tech Stack
+
+- Next.js App Router (v14)
+- TypeScript, Tailwind CSS
+- Stripe SDK (Checkout + Webhooks)
+- Zod for request validation
+
+## 1. Setup
+
+Copy env template and fill real values (never commit secrets):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Set Stripe test keys + price IDs. Create Prices in the Stripe Dashboard first.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 2. Local Development
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Start Stripe webhook forwarding in another shell:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+stripe listen --forward-to localhost:3000/api/webhooks/stripe
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open http://localhost:3000
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 3. Checkout Flow
 
-## Deploy on Vercel
+Buy buttons call internal `/api/checkout` which creates a Checkout Session. Configure:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- One‑time purchase (`vendor-pack`)
+- Multiple subscription SKU variants (monthly/annual)
+  Trial days: 14 (adjust in `app/api/checkout/route.ts`).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 4. Webhooks
+
+`/api/webhooks/stripe` validates events using `STRIPE_WEBHOOK_SECRET` if present. Add provisioning logic for `checkout.session.completed` inside the switch.
+
+## 5. Enterprise Quotes
+
+`/api/enterprise-quote` currently just logs the payload. Replace with email / CRM integration.
+
+## 6. Health Check
+
+`/api/health` returns `{ ok: true }` for uptime monitors.
+
+## 7. Deployment (Vercel)
+
+1. Push to GitHub
+2. Import repo in Vercel
+3. Add all env vars from `.env.example`
+4. In Stripe Dashboard add production webhook endpoint -> `https://<domain>/api/webhooks/stripe`
+5. Redeploy after updates
+
+## 8. Security Hardening
+
+Custom security headers applied in `next.config.mjs` (frame, referrer, MIME, permissions). Add a CSP if/when hosting static 3rd‑party assets.
+
+## 9. Future Enhancements (Ideas)
+
+- Persist enterprise quote requests (DB + email)
+- Replace analytics stub with PostHog/Segment
+- Add basic auth rate limiting middleware
+- Implement license / provisioning service on successful checkout
+
+## 10. Scripts
+
+```bash
+npm run dev      # local dev
+npm run build    # production build
+npm run start    # run built app
+npm run lint     # lint
+npm run format   # apply prettier
+```
+
+---
+
+See `docs_STRIPE_SETUP.md` and `docs_VERCEL_DEPLOY.md` for more detail. For production hardening, also review `LIVE_MODE_STATUS.md`.
