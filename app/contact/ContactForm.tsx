@@ -36,7 +36,7 @@ export default function ContactForm() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
@@ -57,7 +57,7 @@ export default function ContactForm() {
   return (
     <div className="card p-6 border">
       <h2 className="text-xl font-semibold mb-4">Send us a Message</h2>
-      
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -119,11 +119,7 @@ export default function ContactForm() {
           />
         </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full btn btn-primary"
-        >
+        <button type="submit" disabled={loading} className="w-full btn btn-primary">
           {loading ? "Sending..." : "Send Message"}
         </button>
       </form>

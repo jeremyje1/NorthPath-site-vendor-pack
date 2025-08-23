@@ -26,11 +26,11 @@ export async function POST(req: NextRequest) {
 
     // TODO: Replace with actual email sending service (SendGrid, AWS SES, etc.)
     // For now, we'll just log and return success
-    
+
     // Example with SendGrid (commented out):
     // const sgMail = require('@sendgrid/mail');
     // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-    // 
+    //
     // const msg = {
     //   to: 'jeremy.estrella@gmail.com',
     //   from: 'noreply@campusapproval.com',
@@ -45,27 +45,26 @@ export async function POST(req: NextRequest) {
     //     <p>${message.replace(/\n/g, '<br>')}</p>
     //   `,
     // };
-    // 
+    //
     // await sgMail.send(msg);
 
-    return NextResponse.json({ 
-      success: true, 
-      message: "Message received. We'll get back to you within 24 hours on business days." 
+    return NextResponse.json({
+      success: true,
+      message: "Message received. We'll get back to you within 24 hours on business days.",
     });
-
   } catch (error) {
     console.error("Contact form error:", error);
-    
+
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: "Invalid form data", details: error.errors },
-        { status: 400 }
+        { error: "Invalid form data", details: error.issues },
+        { status: 400 },
       );
     }
 
     return NextResponse.json(
       { error: "Failed to send message. Please try again." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

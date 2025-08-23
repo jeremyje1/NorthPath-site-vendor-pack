@@ -1,6 +1,7 @@
-export const metadata = { 
+export const metadata = {
   title: "EvalOps - AI Evaluation & Governance",
-  description: "LLM evaluation frameworks, quality gates, and AI governance tools for Higher Education compliance"
+  description:
+    "LLM evaluation frameworks, quality gates, and AI governance tools for Higher Education compliance",
 };
 
 export default function EvalOpsPage() {
@@ -9,7 +10,7 @@ export default function EvalOpsPage() {
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4">EvalOps Toolkit</h1>
         <p className="text-xl text-neutral-600 dark:text-neutral-300 max-w-3xl mx-auto">
-          Prove AI reliability and governance readiness with systematic evaluation frameworks 
+          Prove AI reliability and governance readiness with systematic evaluation frameworks
           designed for Higher Education risk and compliance requirements.
         </p>
       </div>
@@ -21,8 +22,8 @@ export default function EvalOpsPage() {
             Evaluation Frameworks
           </h2>
           <p className="text-neutral-600 dark:text-neutral-400 mb-6">
-            Comprehensive testing suites for LLM performance, bias detection, 
-            and educational content quality validation.
+            Comprehensive testing suites for LLM performance, bias detection, and educational
+            content quality validation.
           </p>
           <ul className="space-y-3">
             <li className="flex items-start gap-2">
@@ -50,8 +51,8 @@ export default function EvalOpsPage() {
             Quality Gates
           </h2>
           <p className="text-neutral-600 dark:text-neutral-400 mb-6">
-            Automated quality control systems that prevent problematic AI outputs 
-            from reaching students and faculty.
+            Automated quality control systems that prevent problematic AI outputs from reaching
+            students and faculty.
           </p>
           <ul className="space-y-3">
             <li className="flex items-start gap-2">
@@ -76,7 +77,7 @@ export default function EvalOpsPage() {
 
       <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-8 mb-12">
         <h2 className="text-2xl font-semibold mb-6">Higher Education AI Governance</h2>
-        
+
         <div className="grid md:grid-cols-3 gap-6">
           <div className="text-center">
             <div className="text-4xl mb-3">📋</div>
@@ -85,7 +86,7 @@ export default function EvalOpsPage() {
               Align your AI systems with NIST AI Risk Management Framework requirements
             </p>
           </div>
-          
+
           <div className="text-center">
             <div className="text-4xl mb-3">🔒</div>
             <h3 className="font-semibold mb-2">FERPA Compliance</h3>
@@ -93,7 +94,7 @@ export default function EvalOpsPage() {
               Ensure student data protection in AI training and inference workflows
             </p>
           </div>
-          
+
           <div className="text-center">
             <div className="text-4xl mb-3">📊</div>
             <h3 className="font-semibold mb-2">Audit Documentation</h3>
@@ -107,7 +108,7 @@ export default function EvalOpsPage() {
       <div className="grid md:grid-cols-2 gap-8 mb-12">
         <div>
           <h2 className="text-2xl font-semibold mb-6">Technical Implementation</h2>
-          
+
           <div className="space-y-4">
             <div className="border rounded-lg p-4">
               <h3 className="font-semibold mb-2">🔧 CI/CD Integration</h3>
@@ -115,14 +116,14 @@ export default function EvalOpsPage() {
                 Automated evaluation pipelines that run with every model update or deployment
               </p>
             </div>
-            
+
             <div className="border rounded-lg p-4">
               <h3 className="font-semibold mb-2">📈 Performance Monitoring</h3>
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
                 Real-time dashboards tracking model performance, bias metrics, and quality trends
               </p>
             </div>
-            
+
             <div className="border rounded-lg p-4">
               <h3 className="font-semibold mb-2">🔄 Feedback Loops</h3>
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
@@ -131,10 +132,10 @@ export default function EvalOpsPage() {
             </div>
           </div>
         </div>
-        
+
         <div>
           <h2 className="text-2xl font-semibold mb-6">Educational Focus Areas</h2>
-          
+
           <div className="space-y-4">
             <div className="border rounded-lg p-4">
               <h3 className="font-semibold mb-2">📚 Academic Content</h3>
@@ -142,14 +143,14 @@ export default function EvalOpsPage() {
                 Subject-specific evaluation criteria for STEM, humanities, and professional programs
               </p>
             </div>
-            
+
             <div className="border rounded-lg p-4">
               <h3 className="font-semibold mb-2">♿ Accessibility</h3>
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
                 Ensure AI outputs meet WCAG guidelines and support assistive technologies
               </p>
             </div>
-            
+
             <div className="border rounded-lg p-4">
               <h3 className="font-semibold mb-2">🌍 Inclusive Design</h3>
               <p className="text-sm text-neutral-600 dark:text-neutral-400">

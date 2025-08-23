@@ -1,8 +1,8 @@
 import ContactForm from "./ContactForm";
 
-export const metadata = { 
+export const metadata = {
   title: "Contact Us",
-  description: "Get in touch with NorthPath Strategies for Higher Education procurement assistance"
+  description: "Get in touch with NorthPath Strategies for Higher Education procurement assistance",
 };
 
 export default function ContactPage() {
@@ -14,44 +14,44 @@ export default function ContactPage() {
           Ready to accelerate your Higher Education sales process? Let&apos;s talk.
         </p>
       </div>
-      
+
       <div className="grid md:grid-cols-2 gap-8">
         <div className="space-y-6">
           <ContactForm />
         </div>
-        
+
         <div className="space-y-6">
           <div className="card p-6 border">
             <h2 className="text-xl font-semibold mb-4">Other Ways to Connect</h2>
-            
+
             <div className="space-y-4">
               <div>
                 <h3 className="font-medium">Schedule a Strategy Call</h3>
                 <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">
                   30-minute consultation to review your current bottlenecks
                 </p>
-                <a 
-                  href="https://calendly.com/jeremyestrella/30min" 
-                  target="_blank" 
+                <a
+                  href="https://calendly.com/jeremyestrella/30min"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary btn-sm"
                 >
                   Book on Calendly
                 </a>
               </div>
-              
+
               <div>
                 <h3 className="font-medium">Direct Email</h3>
                 <p className="text-sm text-neutral-600 dark:text-neutral-400">
                   jeremy.estrella@gmail.com
                 </p>
               </div>
-              
+
               <div>
                 <h3 className="font-medium">LinkedIn</h3>
-                <a 
-                  href="https://www.linkedin.com/in/jeremyestrella/" 
-                  target="_blank" 
+                <a
+                  href="https://www.linkedin.com/in/jeremyestrella/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:underline text-sm"
                 >
@@ -60,7 +60,7 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-          
+
           <div className="card p-6 border">
             <h2 className="text-xl font-semibold mb-4">What to Expect</h2>
             <ul className="space-y-2 text-sm">
