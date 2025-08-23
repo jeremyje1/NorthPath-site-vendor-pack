@@ -90,12 +90,16 @@ export default function BuyButtons({ product }: { product: ProductKey }) {
   return (
     <div className="space-y-2">
       {displayPrice && <div className="text-2xl font-bold">{displayPrice}</div>}
-      <div className="text-sm text-gray-500 p-2 border rounded">
-        Checkout not configured.
-        <br />
-        <a href="/contact" className="text-blue-600 hover:underline">
-          Contact us to purchase
-        </a>
+      <div className="text-sm text-gray-500 p-3 border rounded bg-yellow-50 dark:bg-yellow-900/20">
+        <div className="font-medium text-gray-700 dark:text-gray-300 mb-1">
+          Payment Setup In Progress
+        </div>
+        <div className="text-xs">
+          Stripe integration is being configured. Ready to purchase?{" "}
+          <a href="/contact" className="text-blue-600 hover:underline font-medium">
+            Contact us to get started today
+          </a>
+        </div>
       </div>
     </div>
   );
