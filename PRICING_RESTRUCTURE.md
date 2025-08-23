@@ -38,8 +38,8 @@ Successfully restructured pricing to include freemium tier, competitive pricing,
 
 #### 1. Create Stripe Products
 ```bash
-# Set your live Stripe API key
-export STRIPE_API_KEY=sk_live_your_key_here
+# Set your live Stripe API key (replace with your actual key)
+export STRIPE_API_KEY=sk_live_YOUR_LIVE_SECRET_KEY_HERE
 
 # Run the creation script
 cd /Users/jeremy.estrella/Desktop/NorthPath-site-vendor-pack-main

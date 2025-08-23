@@ -30,8 +30,18 @@ yarn-error.log*
 .env.vercel
 .env.production
 
+# environment variables with real keys
+vercel-env-vars.txt
+supabase-env-vars.txt
+
 # vercel
 .vercel
+
+# vscode
+.vscode/
+
+# supabase
+supabase/
 
 # typescript
 *.tsbuildinfo

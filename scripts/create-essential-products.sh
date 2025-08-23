@@ -10,8 +10,9 @@ echo "🚀 Creating essential Stripe products for new pricing structure..."
 # Check if STRIPE_API_KEY is set
 if [ -z "$STRIPE_API_KEY" ]; then
     echo "❌ Please set your Stripe API key first:"
-    echo "export STRIPE_API_KEY=sk_live_your_actual_key_here"
+    echo "export STRIPE_API_KEY=sk_live_YOUR_LIVE_SECRET_KEY_HERE"
     echo ""
+    echo "Replace 'YOUR_LIVE_SECRET_KEY_HERE' with your actual Stripe live secret key"
     echo "Then run this script again."
     exit 1
 fi

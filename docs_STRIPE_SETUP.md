@@ -67,7 +67,7 @@ NEXT_PUBLIC_CHECKOUT_CANCEL_URL=https://platform.campusapproval.com/cancel
 ### Option A: Quick Essential Products First
 Creates core one-time + key subscription price IDs.
 ```bash
-export STRIPE_API_KEY=sk_live_xxx   # Live key
+export STRIPE_API_KEY=sk_live_YOUR_LIVE_SECRET_KEY_HERE   # Replace with your actual live key
 ./scripts/create-essential-products.sh
 ```
 Copy the echoed `STRIPE_PRICE_...` values into `.env.local` (or `.env.production` if you use one) and Vercel dashboard.
@@ -75,7 +75,7 @@ Copy the echoed `STRIPE_PRICE_...` values into `.env.local` (or `.env.production
 ### Option B: Full Catalog
 Creates every product & price variable.
 ```bash
-export STRIPE_API_KEY=sk_live_xxx
+export STRIPE_API_KEY=sk_live_YOUR_LIVE_SECRET_KEY_HERE   # Replace with your actual live key
 ./scripts/create-new-stripe-prices.sh
 ```
 Append all emitted env var lines to `.env.local` and Vercel.
@@ -91,7 +91,7 @@ Append all emitted env var lines to `.env.local` and Vercel.
 
 **Vercel Production**: 🔄 NEXT STEP
 1. Go to [Vercel Dashboard](https://vercel.com/dashboard) → Your Project → Settings → Environment Variables
-2. Copy variables from `vercel-env-vars.txt` file
+2. Copy variables from `vercel-env-vars.template` file (replace placeholder values with actual keys)
 3. Add/update each environment variable:
    - All `STRIPE_PRICE_*` variables with new price IDs
    - Verify `STRIPE_SECRET_KEY` and `STRIPE_PUBLISHABLE_KEY` are set

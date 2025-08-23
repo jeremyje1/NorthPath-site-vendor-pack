@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AuthProvider from "@/components/AuthProvider";
 
 export const metadata = {
   title: "NorthPath Strategies – AI Picks & Shovels",
@@ -11,9 +12,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <Header />
-        <main className="container py-10">{children}</main>
-        <Footer />
+        <AuthProvider>
+          <Header />
+          <main className="container py-10">{children}</main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
