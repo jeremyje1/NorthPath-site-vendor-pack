@@ -29,73 +29,73 @@ export const PriceMap: Record<ProductKey, PriceInfo> = {
   "vendor-pack": {
     priceId: process.env.STRIPE_PRICE_VENDOR_PACK_ONE_TIME,
     mode: "payment",
-    price: { oneTime: 2999 },
+    price: { oneTime: 149500 }, // $1,495.00
     description: "Complete procurement documentation package",
   },
   "vendor-pack-updates-monthly": {
     priceId: process.env.STRIPE_PRICE_VENDOR_PACK_UPDATES_MONTHLY,
     mode: "subscription",
-    price: { monthly: 199 },
+    price: { monthly: 19900 }, // $199.00/mo
     description: "Keep documents current with regulations",
   },
   "vendor-pack-updates-annual": {
     priceId: process.env.STRIPE_PRICE_VENDOR_PACK_UPDATES_ANNUAL,
     mode: "subscription",
-    price: { annual: 1990 }, // 2 months free
+    price: { annual: 199000 }, // $1,990.00/yr (2 months free)
     description: "Annual updates with 2 months free",
   },
   "connectors-single-monthly": {
     priceId: process.env.STRIPE_PRICE_CONNECTORS_SINGLE_MONTHLY,
     mode: "subscription",
-    price: { monthly: 299 },
+    price: { monthly: 29900 }, // $299.00/mo
     description: "One LMS connector",
   },
   "connectors-all-monthly": {
     priceId: process.env.STRIPE_PRICE_CONNECTORS_ALL_MONTHLY,
     mode: "subscription",
-    price: { monthly: 699 },
+    price: { monthly: 69900 }, // $699.00/mo
     description: "All LMS & SharePoint connectors",
   },
   "connectors-all-annual": {
     priceId: process.env.STRIPE_PRICE_CONNECTORS_ALL_ANNUAL,
     mode: "subscription",
-    price: { annual: 6990 }, // 2 months free
+    price: { annual: 699000 }, // $6,990.00/yr (2 months free)
     description: "All connectors with 2 months free",
   },
   "evalops-monthly": {
     priceId: process.env.STRIPE_PRICE_EVALOPS_MONTHLY,
     mode: "subscription",
-    price: { monthly: 499 },
+    price: { monthly: 49900 }, // $499.00/mo
     description: "LLM evaluation toolkit & CI/CD",
   },
   "evalops-annual": {
     priceId: process.env.STRIPE_PRICE_EVALOPS_ANNUAL,
     mode: "subscription",
-    price: { annual: 4990 }, // 2 months free
+    price: { annual: 499000 }, // $4,990.00/yr (2 months free)
     description: "Annual EvalOps with 2 months free",
   },
   "bundle-monthly": {
     priceId: process.env.STRIPE_PRICE_BUNDLE_MONTHLY,
     mode: "subscription",
-    price: { monthly: 1299 },
+    price: { monthly: 149900 }, // $1,499.00/mo
     description: "Complete package - everything included",
   },
   "bundle-annual": {
     priceId: process.env.STRIPE_PRICE_BUNDLE_ANNUAL,
     mode: "subscription",
-    price: { annual: 12990 }, // 2 months free
+    price: { annual: 1499000 }, // $14,990.00/yr (2 months free)
     description: "Annual bundle with 2 months free",
   },
   "enterprise-monthly": {
     priceId: process.env.STRIPE_PRICE_ENTERPRISE_MONTHLY,
     mode: "subscription",
-    price: { monthly: 2999 },
+    price: { monthly: 299900 }, // $2,999.00/mo
     description: "White-glove service, SLAs, custom work",
   },
   "enterprise-annual": {
     priceId: process.env.STRIPE_PRICE_ENTERPRISE_ANNUAL,
     mode: "subscription",
-    price: { annual: 29990 }, // 2 months free
+    price: { annual: 2999000 }, // $29,990.00/yr (2 months free)
     description: "Annual enterprise with 2 months free",
   },
 };

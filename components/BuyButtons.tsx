@@ -65,7 +65,7 @@ export default function BuyButtons({ product }: { product: ProductKey }) {
         {displayPrice && <div className="text-2xl font-bold">{displayPrice}</div>}
         <a
           onClick={() => logEvent("payment_link_click", { product })}
-          href={entry.paymentLink!}
+          href={entry.paymentLink}
           className="btn btn-primary w-full"
           target="_blank"
           rel="noreferrer"
