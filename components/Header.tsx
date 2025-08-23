@@ -10,6 +10,7 @@ export default function Header() {
     { href: "/connectors", label: "Connectors" },
     { href: "/evalops", label: "EvalOps" },
     { href: "/pricing", label: "Pricing" },
+    { href: "/contact", label: "Contact" },
   ];
   return (
     <header className="border-b border-gray-200">

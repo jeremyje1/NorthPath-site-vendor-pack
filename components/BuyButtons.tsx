@@ -1,14 +1,22 @@
 "use client";
 import { useState } from "react";
-import { PriceMap, successUrl, cancelUrl, ProductKey } from "@/lib/pricing";
+import { PriceMap, successUrl, cancelUrl, ProductKey, formatPrice, type PriceInfo } from "@/lib/pricing";
 import { logEvent } from "@/lib/analytics";
 
 export default function BuyButtons({ product }: { product: ProductKey }) {
   const [loading, setLoading] = useState(false);
-  const entry = PriceMap[product];
+  const entry: PriceInfo = PriceMap[product];
 
   const hasPaymentLink = !!entry.paymentLink;
   const hasServerPrice = !!entry.priceId;
+
+  // Get display price
+  const displayPrice = entry.price ? (
+    entry.price.oneTime ? formatPrice(entry.price.oneTime) :
+    entry.price.monthly ? `${formatPrice(entry.price.monthly)}/mo` :
+    entry.price.annual ? `${formatPrice(entry.price.annual)}/yr` :
+    null
+  ) : null;
 
   const handleCheckout = async () => {
     logEvent("checkout_click", { product, mode: entry.mode });
@@ -43,25 +51,42 @@ export default function BuyButtons({ product }: { product: ProductKey }) {
 
   if (hasPaymentLink) {
     return (
-      <a
-        onClick={() => logEvent("payment_link_click", { product })}
-        href={entry.paymentLink!}
-        className="btn btn-primary"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Buy Now
-      </a>
+      <div className="space-y-2">
+        {displayPrice && <div className="text-2xl font-bold">{displayPrice}</div>}
+        <a
+          onClick={() => logEvent("payment_link_click", { product })}
+          href={entry.paymentLink!}
+          className="btn btn-primary w-full"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Buy Now
+        </a>
+      </div>
     );
   }
 
   if (hasServerPrice) {
     return (
-      <button onClick={handleCheckout} className="btn btn-primary" disabled={loading}>
-        {loading ? "Starting…" : "Buy with Stripe"}
-      </button>
+      <div className="space-y-2">
+        {displayPrice && <div className="text-2xl font-bold">{displayPrice}</div>}
+        <button onClick={handleCheckout} className="btn btn-primary w-full" disabled={loading}>
+          {loading ? "Starting…" : "Buy with Stripe"}
+        </button>
+      </div>
     );
   }
 
-  return <div className="text-sm text-gray-500">Checkout not configured.</div>;
+  return (
+    <div className="space-y-2">
+      {displayPrice && <div className="text-2xl font-bold">{displayPrice}</div>}
+      <div className="text-sm text-gray-500 p-2 border rounded">
+        Checkout not configured. 
+        <br />
+        <a href="mailto:jeremy.estrella@gmail.com" className="text-blue-600 hover:underline">
+          Contact us to purchase
+        </a>
+      </div>
+    </div>
+  );
 }
