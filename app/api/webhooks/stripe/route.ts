@@ -24,7 +24,7 @@ export async function POST(req: Request) {
 
     switch (event.type) {
       case "checkout.session.completed": {
-        const session = event.data.object as any;
+        const session = event.data.object;
         console.log("checkout.session.completed", session.id);
 
         // Get customer email and find/create user
@@ -95,20 +95,14 @@ export async function POST(req: Request) {
         }
 
         const userId = subscriptionData.user_id;
-        const planType = getPlanTypeFromPriceId(
-          (subscription as any).items.data[0]?.price.id || "",
-        );
+        const planType = getPlanTypeFromPriceId(subscription.items.data[0]?.price.id || "");
 
         // Update subscription status
         await updateUserSubscription(userId, {
           plan_type: planType,
-          status: (subscription as any).status,
-          current_period_start: new Date(
-            (subscription as any).current_period_start * 1000,
-          ).toISOString(),
-          current_period_end: new Date(
-            (subscription as any).current_period_end * 1000,
-          ).toISOString(),
+          status: subscription.status,
+          current_period_start: new Date(subscription.current_period_start * 1000).toISOString(),
+          current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
         });
 
         // Update document access based on new plan
@@ -194,7 +188,7 @@ export async function POST(req: Request) {
 function getPlanTypeFromPriceId(
   priceId: string,
 ): "free" | "starter" | "professional" | "enterprise" {
-  // TODO: Update these with your actual Stripe price IDs from environment variables
+  // Price ID to plan type mapping using environment variables
   const priceIdToPlan: Record<string, "free" | "starter" | "professional" | "enterprise"> = {
     // Starter tier products
     [process.env.STRIPE_PRICE_VENDOR_PACK_STARTER || ""]: "starter",

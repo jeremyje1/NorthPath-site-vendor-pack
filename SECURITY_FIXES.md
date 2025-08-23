@@ -8,7 +8,7 @@ Multiple files contained hardcoded Stripe API keys that were being tracked by gi
 ### Files Updated
 
 #### Documentation Files
-- `docs_STRIPE_SETUP.md` - Replaced `sk_live_xxx` with placeholder values
+- `docs_STRIPE_SETUP.md` - Replaced example keys with secure placeholder values
 - `PRICING_RESTRUCTURE.md` - Updated script examples with secure placeholders
 - `scripts/create-essential-products.sh` - Enhanced error message with secure placeholder
 

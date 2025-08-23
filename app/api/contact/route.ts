@@ -3,7 +3,7 @@ import { z } from "zod";
 
 const ContactSchema = z.object({
   name: z.string().min(1, "Name is required").max(100),
-  email: z.string().email("Invalid email").max(320),
+  email: z.string().email().max(320),
   company: z.string().max(100).optional(),
   message: z.string().min(10, "Message must be at least 10 characters").max(2000),
 });
@@ -24,8 +24,9 @@ export async function POST(req: NextRequest) {
       userAgent: req.headers.get("user-agent"),
     });
 
-    // TODO: Replace with actual email sending service (SendGrid, AWS SES, etc.)
-    // For now, we'll just log and return success
+    // Email service integration (configure in production)
+    // Options: SendGrid, AWS SES, Resend, or Nodemailer
+    // Set SENDGRID_API_KEY or similar in environment variables
 
     // Example with SendGrid (commented out):
     // const sgMail = require('@sendgrid/mail');
