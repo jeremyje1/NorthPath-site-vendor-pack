@@ -1,0 +1,64 @@
+# Vercel Deployment Checklist
+
+## Environment Variables to Update in Vercel
+
+Copy these variables to Vercel Dashboard → Settings → Environment Variables:
+
+### Stripe Core Configuration
+```
+STRIPE_SECRET_KEY=[Copy from your Stripe Dashboard → Developers → API Keys]
+STRIPE_PUBLISHABLE_KEY=[Copy from your Stripe Dashboard → Developers → API Keys]
+STRIPE_WEBHOOK_SECRET=[Copy from your Stripe Dashboard → Developers → Webhooks]
+```
+
+### Checkout URLs
+```
+NEXT_PUBLIC_CHECKOUT_SUCCESS_URL=https://platform.campusapproval.com/success
+NEXT_PUBLIC_CHECKOUT_CANCEL_URL=https://platform.campusapproval.com/cancel
+```
+
+### Product Price IDs (NEW)
+```
+STRIPE_PRICE_STARTER_FREE=price_1RzNhqEiucq5DMllS7d1zmUW
+STRIPE_PRICE_TRIAL_FULL_ACCESS=price_1RzNhrEiucq5DMll2K6lvj4s
+STRIPE_PRICE_VENDOR_PACK_STARTER=price_1RzNhsEiucq5DMllCNgIYh19
+STRIPE_PRICE_VENDOR_PACK_PROFESSIONAL=price_1RzNhtEiucq5DMllEYyugfHb
+STRIPE_PRICE_VENDOR_PACK_UPDATES_MONTHLY=price_1RzNhuEiucq5DMlliPhpH93A
+STRIPE_PRICE_VENDOR_PACK_UPDATES_ANNUAL=price_1RzNhwEiucq5DMllaewoxEoe
+STRIPE_PRICE_CONNECTORS_SINGLE_MONTHLY=price_1RzNhxEiucq5DMlluIJbZ5kC
+STRIPE_PRICE_CONNECTORS_ALL_MONTHLY=price_1RzNhyEiucq5DMllwor61txP
+STRIPE_PRICE_CONNECTORS_ALL_ANNUAL=price_1RzNhzEiucq5DMll5Pj3eRWh
+STRIPE_PRICE_EVALOPS_MONTHLY=price_1RzNi0Eiucq5DMllpj1EyOk6
+STRIPE_PRICE_EVALOPS_ANNUAL=price_1RzNi1Eiucq5DMllzgtpghxA
+STRIPE_PRICE_BUNDLE_PROFESSIONAL_MONTHLY=price_1RzNi3Eiucq5DMllFY8bLjoK
+STRIPE_PRICE_BUNDLE_PROFESSIONAL_ANNUAL=price_1RzNi4Eiucq5DMllaqv4zfRk
+STRIPE_PRICE_BUNDLE_ENTERPRISE_MONTHLY=price_1RzNi5Eiucq5DMllTEnfIDRe
+STRIPE_PRICE_BUNDLE_ENTERPRISE_ANNUAL=price_1RzNi6Eiucq5DMllrfuu5YeJ
+STRIPE_PRICE_ENTERPRISE_MONTHLY=price_1RzNi7Eiucq5DMllAEqyaDGQ
+STRIPE_PRICE_ENTERPRISE_ANNUAL=price_1RzNi8Eiucq5DMllcI0qipxc
+```
+
+## Post-Deployment Steps
+
+1. **Verify deployment** - Check that the site builds and deploys successfully
+2. **Test pricing page** - Confirm all products display with correct prices
+3. **Test checkout flow** - Try a low-value test purchase
+4. **Configure Stripe Dashboard**:
+   - Settings → Checkout & Payment Links
+   - Add `platform.campusapproval.com` to allowed domains
+   - Set up branding (optional)
+
+## Quick Commands for Reference
+
+```bash
+# Verify local environment
+./scripts/verify-stripe-env.sh
+
+# Test local build
+npm run build
+
+# Start development server
+npm run dev
+```
+
+**Status**: Ready for Vercel deployment! 🚀

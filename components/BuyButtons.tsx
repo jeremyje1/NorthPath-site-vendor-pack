@@ -16,17 +16,44 @@ export default function BuyButtons({ product }: { product: ProductKey }) {
 
   const hasPaymentLink = !!entry.paymentLink;
   const hasServerPrice = !!entry.priceId;
+  const isFree = entry.price?.monthly === 0;
 
   // Get display price
-  const displayPrice = entry.price
-    ? entry.price.oneTime
-      ? formatPrice(entry.price.oneTime)
-      : entry.price.monthly
-        ? `${formatPrice(entry.price.monthly)}/mo`
-        : entry.price.annual
-          ? `${formatPrice(entry.price.annual)}/yr`
-          : null
-    : null;
+  const getDisplayPrice = () => {
+    if (!entry.price) return null;
+
+    if (entry.price.oneTime) {
+      return formatPrice(entry.price.oneTime);
+    }
+
+    if (entry.price.monthly !== undefined) {
+      return entry.price.monthly === 0 ? "Free" : `${formatPrice(entry.price.monthly)}/mo`;
+    }
+
+    if (entry.price.annual) {
+      return `${formatPrice(entry.price.annual)}/yr`;
+    }
+
+    return null;
+  };
+
+  const displayPrice = getDisplayPrice();
+
+  // Handle free tier
+  if (isFree) {
+    return (
+      <div className="space-y-2">
+        <div className="text-2xl font-bold text-green-600">Free</div>
+        <a
+          href="/portal"
+          className="btn btn-primary w-full"
+          onClick={() => logEvent("free_tier_signup", { product })}
+        >
+          Get Started Free
+        </a>
+      </div>
+    );
+  }
 
   const handleCheckout = async () => {
     logEvent("checkout_click", { product, mode: entry.mode });

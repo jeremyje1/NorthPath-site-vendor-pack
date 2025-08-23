@@ -14,7 +14,7 @@ export default function VendorPack() {
         <li>FERPA‑aware language</li>
       </ul>
       <div className="flex gap-3">
-        <BuyButtons product="vendor-pack" />
+        <BuyButtons product="vendor-pack-professional" />
         <BuyButtons product="vendor-pack-updates-monthly" />
         <Link className="btn" href="/pricing">
           See pricing
