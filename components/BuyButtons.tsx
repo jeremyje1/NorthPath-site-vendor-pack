@@ -93,7 +93,7 @@ export default function BuyButtons({ product }: { product: ProductKey }) {
       <div className="text-sm text-gray-500 p-2 border rounded">
         Checkout not configured.
         <br />
-        <a href="mailto:jeremy.estrella@gmail.com" className="text-blue-600 hover:underline">
+        <a href="/contact" className="text-blue-600 hover:underline">
           Contact us to purchase
         </a>
       </div>

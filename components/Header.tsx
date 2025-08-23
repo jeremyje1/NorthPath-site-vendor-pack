@@ -6,6 +6,7 @@ export default function Header() {
   const pathname = usePathname();
   const nav = [
     { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
     { href: "/vendor-pack", label: "Vendor Pack" },
     { href: "/connectors", label: "Connectors" },
     { href: "/evalops", label: "EvalOps" },
